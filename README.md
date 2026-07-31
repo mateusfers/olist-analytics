@@ -1,136 +1,80 @@
-\# Olist Analytics
-
-
+# Olist Analytics
 
 Dashboard de performance de vendas do marketplace Olist.
 
-
-
-\## Contexto
-
+## Contexto
 Projeto de análise de dados para responder perguntas estratégicas sobre o negócio.
 
+## Perguntas de Negócio
+- Quais categorias de produto mais vendem?
+- Qual o tempo médio de entrega e como isso impacta a nota do cliente?
+- Qual a sazonalidade das vendas?
+- Quais estados têm melhor performance?
 
-
-\## Perguntas de Negócio
-
-\- Quais categorias de produto mais vendem?
-
-\- Qual o tempo médio de entrega e como isso impacta a nota do cliente?
-
-\- Qual a sazonalidade das vendas?
-
-\- Quais estados têm melhor performance?
-
-
-
-\## Estrutura do Projeto
-
-
+## Estrutura do Projeto
 
 ```
-
 olist-analytics/
-
 ├── data/
-
 │   └── raw/              # Dados brutos da Olist (CSVs)
-
 ├── notebooks/            # Jupyter Notebooks
-
 ├── src/                  # Módulos Python
-
 ├── assets/               # Imagens e prints
-
 ├── .gitignore
-
 └── README.md
-
 ```
 
-
-
-\## Stack Tecnológica
-
-
+## Stack Tecnológica
 
 | Ferramenta | Propósito |
-
 |------------|-----------|
-
 | Python 3.10+ | Linguagem principal |
-
 | Pandas, NumPy | Manipulação de dados |
-
 | Matplotlib, Seaborn, Plotly | Visualização |
-
 | Streamlit | Dashboard interativo |
-
 | Power BI | Dashboard corporativo |
-
 | Docker | Containerização |
-
 | GitHub Actions | CI/CD |
 
-
-
-\## Como Rodar
-
-
+## Como Rodar
 
 ```bash
-
-\# Clone
-
+# Clone
 git clone https://github.com/mateusfers/olist-analytics.git
-
 cd olist-analytics
 
-
-
-\# Ambiente virtual
-
+# Ambiente virtual
 python -m venv venv
+venv\Scripts\activate
 
-venv\\Scripts\\activate
-
-
-
-\# Dependências
-
+# Dependências
 pip install pandas numpy matplotlib seaborn plotly streamlit jupyter
 
-
-
-\# Dados: baixe da Olist e coloque em data/raw/
-
+# Dados: baixe da Olist e coloque em data/raw/
 ```
 
+## Insights
 
+### 1. Tempo de Entrega e Nota do Cliente
+Correlação de -0.35 entre tempo de entrega e nota do cliente.
 
-\## Entregáveis
+### 2. Concentração no Sudeste
+SP concentra 42% dos pedidos.
 
+### 3. Sazonalidade
+Agosto é pico (10.843 pedidos). Setembro é queda (4.305 pedidos).
 
+## Entregáveis
 
-\- \[x] Setup inicial
+- [x] Setup inicial
+- [x] Dados baixados
+- [x] Análise exploratória
+- [ ] Dashboard Streamlit
+- [ ] Dashboard Power BI
+- [ ] Docker
+- [ ] CI/CD
 
-\- \[x] Dados baixados
-
-\- \[ ] Análise exploratória
-
-\- \[ ] Dashboard Streamlit
-
-\- \[ ] Dashboard Power BI
-
-\- \[ ] Docker
-
-\- \[ ] CI/CD
-
-
-
-\## Status
-
-
+## Status
 
 Em desenvolvimento.
 
