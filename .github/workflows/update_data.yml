@@ -2,7 +2,7 @@ name: Update Data
 
 on:
   schedule:
-    - cron: '0 9 * * 0'  # Todo domingo às 9h
+    - cron: '0 9 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -21,10 +21,26 @@ jobs:
       run: |
         python -c "
 import pandas as pd
+import os
+
+# Verificar se a pasta data/raw existe
+if not os.path.exists('data/raw'):
+    print('❌ Pasta data/raw não encontrada!')
+    exit(1)
+
+# Verificar se o arquivo existe
+if not os.path.exists('data/raw/olist_orders_dataset.csv'):
+    print('❌ Arquivo data/raw/olist_orders_dataset.csv não encontrado!')
+    exit(1)
+
 print('📊 Atualizando dados...')
 df = pd.read_csv('data/raw/olist_orders_dataset.csv')
-print(f'✅ {len(df)} registros processados')
+
+# Criar a pasta data/ se não existir
+os.makedirs('data/', exist_ok=True)
+
 df.to_csv('data/processed_data.csv', index=False)
+print(f'✅ {len(df)} registros processados')
 print('✅ Dados salvos em data/processed_data.csv')
 "
     - name: Commit and push if changed
