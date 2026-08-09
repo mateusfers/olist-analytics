@@ -1,0 +1,31 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: |
+        pip install pandas streamlit matplotlib seaborn
+    - name: Test imports
+      run: |
+        python -c "import pandas; print('✅ Pandas OK')"
+        python -c "import streamlit; print('✅ Streamlit OK')"
+        python -c "import matplotlib; print('✅ Matplotlib OK')"
+        python -c "import seaborn; print('✅ Seaborn OK')"
+    - name: Check files
+      run: |
+        ls -la
+        test -f dashboard/app.py && echo "✅ Dashboard exists"
+        test -f data/raw/olist_orders_dataset.csv && echo "✅ Data exists"
